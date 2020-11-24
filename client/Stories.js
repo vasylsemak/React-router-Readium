@@ -22,6 +22,8 @@ export default class Stories extends Component {
   render () {
     const stories = this.state.stories
 
+    console.log('-------> ', stories);
+
     return (
       <div id='stories' className='column'>
         {
