@@ -3,7 +3,8 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import Stories from './Stories'
 import Authors from './Authors'
-import SS from './SS'
+import SingleStory from './SingleStory'
+import SingleAuthor from './SingleAuthor'
 
 export default class Main extends React.Component {
   render () {
@@ -18,8 +19,9 @@ export default class Main extends React.Component {
             </div>
             <Navbar />
           </div>
-          <Route path='/authors' component={Authors} />
-          <Route path='/stories/:id' component={SS} />
+          <Route path='/authors/:id' component={SingleAuthor} />
+          <Route path='/stories/:id' component={SingleStory} />
+          <Route exact path='/authors' component={Authors} />
           <Route exact path='/stories' component={Stories} />
           <Route exact path='/' component={Stories} />
         </div>
