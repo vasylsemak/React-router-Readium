@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default class Stories extends Component {
   constructor () {
@@ -27,9 +28,9 @@ export default class Stories extends Component {
         {
           stories.map(story => (
             <div className='story' key={story.id}>
-              <a>
+              <Link to={`stories/${story.id}`}>
                 <h3>{story.title}</h3>
-              </a>
+              </Link>
               <a>
                 <p>{story.author.name}</p>
               </a>
