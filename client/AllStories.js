@@ -1,25 +1,20 @@
-import React, {Component} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Stories from './Stories'
 
-export default class AllStories extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      stories: []
-    }
-  }
+const AllStories = () => {
+  const [ stories, setStories ] = useState([])
 
-  async componentDidMount () {
-    try {
-      const storiesResponse = await axios.get('/api/stories')
-      this.setState({ stories: storiesResponse.data })
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  useEffect(() => {
+    (async function() {
+      try {
+        const { data } = await axios.get('/api/stories')
+        setStories(data)
+      } catch (error) { console.error(error) }
+    })()
+  }, [])
 
-  render () {
-    return <Stories stories={this.state.stories} />
-  }
+  return <Stories stories={stories} />
 }
+
+export default AllStories

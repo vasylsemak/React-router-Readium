@@ -12,16 +12,12 @@ export default class Main extends React.Component {
     return (
       <Router>
         <div id='main'>
-
           <div className='column container'>
             <div id='header'>
-              <Link to='/'>
-                <h1>Readium</h1>
-              </Link>
+              <Link to='/'><h1>Readium</h1></Link>
             </div>
             <Navbar />
           </div>
-
           <Route path='/authors/:id' component={SingleAuthor} />
           <Route path='/stories/:id' component={SingleStory} />
           <Route exact path='/authors' component={Authors} />
