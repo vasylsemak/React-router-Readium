@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 import axios from 'axios'
+import Stories from './Stories'
 
 class SingleAuthor extends Component {
   constructor() {
@@ -28,6 +29,7 @@ class SingleAuthor extends Component {
 
   render() {
     const { author } = this.state
+    const { stories } = author
 
     return (
       <div id='single-author' className='column'>
@@ -37,6 +39,13 @@ class SingleAuthor extends Component {
             <p>{author.bio}</p>
           </div>
           <img src={author.imageUrl} />
+        </div>
+        <div id='single-author-nav'>
+          <Link to={`/authors/${author.id}/stories`}>Stories</Link>
+        </div>
+        <hr />
+        <div>
+          <Route path='/authors/:id/stories' render={() => <Stories stories={stories} />} />
         </div>
       </div>
     )

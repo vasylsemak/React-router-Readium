@@ -11,10 +11,7 @@ export default class Authors extends Component {
   async componentDidMount() {
     try {
       const { data } = await axios.get('/api/authors')
-      this.setState({ authors: data }, () => {
-        console.log("CDM -> ", this.state.authors);
-      })
-
+      this.setState({ authors: data })
     } catch (error) { console.log(error) }
   }
 
